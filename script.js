@@ -154,6 +154,18 @@ const pens = {
 			ctx.globalAlpha = 1
 		},
 	},
+	pen: {
+		draw(x, y) {
+			ctx.beginPath()
+			ctx.lineWidth = 2
+			ctx.lineCap = 'round'
+			ctx.lineJoin = 'round'
+			ctx.strokeStyle = '#000000'
+			ctx.moveTo(lastX, lastY)
+			ctx.lineTo(x, y)
+			ctx.stroke()
+		},
+	},
 	crayon: {
 		draw(x, y) {
 			ctx.lineWidth = 10
