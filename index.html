@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>scribble pop</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" type="image/x-icon" href="./icons/favicon.ico" />
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="backgroundCanvas"></canvas>
+			<canvas id="drawingCanvas"></canvas>
+			<div class="toolbar">
+				<button class="tool-btn active" onclick="setPen('watercolor')">
+					<img src="icons/watercolor.png" alt="Watercolor" /> Watercolor
+				</button>
+				<button class="tool-btn" onclick="setPen('stamp')">
+					<img src="icons/stamp.png" alt="Stamps" /> Stamp
+				</button>
+				<button class="tool-btn" onclick="setPen('acrylic')">
+					<img src="icons/acrylic.png" alt="Acrylic" /> Acrylic
+				</button>
+				<button class="tool-btn" onclick="setPen('crayon')">
+					<img src="icons/crayon.png" alt="Crayon" /> Crayon
+				</button>
+				<button class="tool-btn" onclick="setPen('spray')">
+					<img src="icons/spray.png" alt="Spray" /> Spray
+				</button>
+				<button class="tool-btn" onclick="clearCanvas()">
+					<img src="icons/trash.png" alt="Clear" /> Clear
+				</button>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
