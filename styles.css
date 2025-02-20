@@ -13,13 +13,13 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	padding: 0 10px;
 }
 
 .container {
 	position: relative;
-	width: 80vw;
-	height: 80vh;
-	margin-bottom: 80px; /* Space for toolbar */
+	width: 90vw;
+	margin-bottom: 100px;
 }
 
 #backgroundCanvas {
@@ -42,12 +42,12 @@ body {
 }
 
 .toolbar {
-	background: rgba(255, 255, 255, 0.7);
+	background: rgba(255, 255, 255, 0.9);
 	backdrop-filter: blur(5px);
-	padding: 15px;
+	padding: 10px;
 	display: flex;
 	justify-content: center;
-	gap: 10px;
+	gap: 8px;
 	border-top: 3px solid white;
 	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 	position: fixed;
@@ -55,11 +55,12 @@ body {
 	left: 0;
 	right: 0;
 	z-index: 1000;
+	flex-wrap: wrap; /* allow btns to wrap on mobile */
 }
 
 .tool-btn {
-	font-size: 16px;
-	padding: 8px 15px;
+	font-size: 14px;
+	padding: 6px 12px;
 	border: none;
 	border-radius: 20px;
 	background: #fff;
@@ -69,13 +70,16 @@ body {
 	font-family: 'Pixelify Sans', cursive;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 80px; /* ensure minimum button width */
 }
 
 .tool-btn img {
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
-	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	margin-right: 4px;
 }
 
 .tool-btn:hover {
@@ -87,9 +91,42 @@ body {
 	box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
-	cursor: crosshair;
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+	.container {
+		width: 95vw;
+		height: 75vh;
+		margin-bottom: 120px;
+	}
+
+	.toolbar {
+		padding: 8px 4px;
+	}
+
+	.tool-btn {
+		font-size: 12px;
+		padding: 5px 10px;
+		min-width: 70px;
+	}
+
+	.tool-btn img {
+		width: 16px;
+		height: 16px;
+		margin-right: 3px;
+	}
+}
+
+@media (max-width: 480px) {
+	.container {
+		margin-bottom: 140px;
+	}
+
+	.toolbar {
+		gap: 6px;
+	}
+
+	.tool-btn {
+		min-width: 60px;
+		padding: 4px 8px;
+	}
 }
