@@ -19,6 +19,7 @@ body {
 .container {
 	position: relative;
 	width: 90vw;
+	height: 80vh;
 	margin-bottom: 100px;
 }
 
@@ -73,7 +74,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-width: 80px; /* ensure minimum button width */
+	min-width: 80px;
 }
 
 .tool-btn img {
