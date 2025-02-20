@@ -9,14 +9,48 @@ let sprayHistory = []
 // set canvas size
 function resizeCanvas() {
 	const container = document.querySelector('.container')
-	canvas.width = container.offsetWidth
-	canvas.height = container.offsetHeight
+
+	// save the current dimensions and content
+	const oldWidth = canvas.width
+	const oldHeight = canvas.height
+	const tempCanvas = document.createElement('canvas')
+	const tempCtx = tempCanvas.getContext('2d')
+	tempCanvas.width = oldWidth
+	tempCanvas.height = oldHeight
+	tempCtx.drawImage(canvas, 0, 0)
+
+	// get new dimensions
+	const newWidth = container.offsetWidth
+	const newHeight = container.offsetHeight
+
+	// resize the main canvas
+	canvas.width = newWidth
+	canvas.height = newHeight
+
+	// scale and restore the content
+	ctx.drawImage(
+		tempCanvas,
+		0,
+		0,
+		oldWidth,
+		oldHeight, // source dimensions
+		0,
+		0,
+		newWidth,
+		newHeight // destination dimensions
+	)
 }
 
 resizeCanvas()
-window.addEventListener('resize', resizeCanvas)
 
-// Get canvas position relative to viewport
+// debounce the resize event to prevent excessive redrawing
+let resizeTimeout
+window.addEventListener('resize', () => {
+	clearTimeout(resizeTimeout)
+	resizeTimeout = setTimeout(resizeCanvas, 100)
+})
+
+// get canvas position relative to viewport
 function getCanvasPosition() {
 	const rect = canvas.getBoundingClientRect()
 	return {
@@ -270,7 +304,7 @@ const pens = {
 	},
 }
 
-// Update drawing coordinates
+// update drawing coordinates
 function getDrawingCoordinates(e) {
 	const rect = canvas.getBoundingClientRect()
 	return {
